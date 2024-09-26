@@ -1,8 +1,2 @@
-SELECT 
-  COALESCE(
-    (SELECT num 
-     FROM MyNumbers 
-     GROUP BY num 
-     HAVING COUNT(num) = 1 
-     ORDER BY num DESC 
-     LIMIT 1), NULL) AS num;
+select max(num) as num
+from (select num from mynumbers group by num having count(num)=1) as n
